@@ -69,3 +69,52 @@ function generateOneNumber(){
 	
 	return true;
 }
+
+$(document).keydown(function(event){
+	switch (event.keyCode){
+		case 37://left
+			if(moveLeft()){
+				generateOneNumber();
+				isgameover();
+			}
+			
+			break;
+		case 38://up
+			break;
+		case 39://right
+			break;
+		case 40://down
+			break;
+		default:
+			break;
+	}
+})
+function isgameover(){
+	
+}
+function moveLeft(){
+	if(!canMoveLeft(board)) return false;
+	
+	for(var i = 0; i< 4;i++){
+		for(var j = 1;j<4;j++){
+			if(board[i][j] != 0){
+				for(var k = 0; k<j;k++){
+					if(board[i][k]==0&&noBlockHorizontal(i,k,j,board)){
+						showMoveAnimation(i,j,i,k);
+						board[i][k] = board[i][j];
+						board[i][j] = 0;
+						continue;
+					}else if(board[i][k]==board[i][j]&&noBlockHorizontal(i,k,j,board)){
+						showMoveAnimation(i,j,i,k);
+						board[i][k] = board[i][k] + board[i][j];
+						board[i][j] = 0;
+						continue;
+					}
+				}
+			}
+		}
+	}
+	setTimeout("updateBoardView()",200)
+	return true;
+	
+}
