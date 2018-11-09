@@ -1,7 +1,15 @@
 *{padding: 0;margin: 0;}
 header{
 	text-align: center;
+	margin-top: 40px;
 }
+.newgameButton{
+	text-decoration: none;
+	display: inline-block;
+	padding: 2px 6px;
+	background: goldenrod;
+	border-radius: 4px;
+	color: #fff;}
 .grid-container{
 	width: 460px;
 	height: 460px;
