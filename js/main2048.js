@@ -216,6 +216,7 @@ function moveLeft(){
 						showMoveAnimation(i,j,i,k);
 						board[i][k] = board[i][j];
 						board[i][j] = 0;
+						playMusic_null();
 						continue;
 					}else if(board[i][k]==board[i][j]&&noBlockHorizontal(i,k,j,board)&&hasConflicted[i][k]){
 						showMoveAnimation(i,j,i,k);
@@ -224,6 +225,7 @@ function moveLeft(){
 						score+=board[i][k];
 						updateScore(score);
 						hasConflicted[i][k] = false;
+						playMusic_add();
 						continue;
 					}
 				}
@@ -246,6 +248,7 @@ function moveUp(){
 						showMoveAnimation(i,j,k,j);
 						board[k][j] = board[i][j];
 						board[i][j] = 0;
+						playMusic_null();
 						continue;
 					}else if(board[k][j]==board[i][j]&&noBlockVertical(k,i,j,board)&&hasConflicted[k][j]){
 						showMoveAnimation(i,j,k,j);
@@ -254,6 +257,7 @@ function moveUp(){
 						score+=board[k][j];
 						updateScore(score);
 						hasConflicted[k][j] = false;
+						playMusic_add();
 						continue;
 					}
 				}
@@ -275,6 +279,7 @@ function moveRight(){
 						showMoveAnimation(i,j,i,k);
 						board[i][k] = board[i][j];
 						board[i][j] = 0;
+						playMusic_null();
 						continue;
 					}else if(board[i][k]==board[i][j]&&noBlockHorizontal(i,j,k,board)&&hasConflicted[i][k]){
 						showMoveAnimation(i,j,i,k);
@@ -283,6 +288,7 @@ function moveRight(){
 						score+=board[i][k];
 						updateScore(score);
 						hasConflicted[i][k] = false;
+						playMusic_add();
 						continue;
 					}
 				}
@@ -305,6 +311,7 @@ function moveDown(){
 						showMoveAnimation(i,j,k,j);
 						board[k][j] = board[i][j];
 						board[i][j] = 0;
+						playMusic_null();
 						continue;
 					}else if(board[k][j]==board[i][j]&&noBlockVertical(i,k,j,board)&&hasConflicted[k][j]){
 						showMoveAnimation(i,j,k,j);
@@ -313,6 +320,7 @@ function moveDown(){
 						score+=board[k][j];
 						updateScore(score);
 						hasConflicted[k][j] = false;
+						playMusic_add();
 						continue;
 					}
 				}
@@ -322,4 +330,12 @@ function moveDown(){
 	setTimeout("updateBoardView()",200)
 	return true;
 	
+}
+function playMusic_null(){
+	var music = document.getElementById('nullMusic');
+	music.play()
+}
+function playMusic_add(){
+	var music = document.getElementById('addMusic');
+	music.play()
 }
